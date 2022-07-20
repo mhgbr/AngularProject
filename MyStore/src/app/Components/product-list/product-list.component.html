@@ -1,0 +1,5 @@
+<div class="container">
+    <div class="row">
+<app-product-item class="col-md-4" *ngFor="let product of products" [product]="product"(addCartItemEvent)="addEmittedProduct($event)"></app-product-item>
+</div>
+</div>

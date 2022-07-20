@@ -1,0 +1,21 @@
+<div class="detail-container">      
+    <img src="{{product.url}}" alt="{{product.name}}"/>      
+        <div class="detail-item">
+         <h5 class="card-title"> {{product.name}} </h5>
+         <p class="card-text"> {{product.description}}</p>
+         <p>{{product.price}}$</p>               
+        <form >
+         <div>
+         <select class="select-input" name="quantity" id="quantity" (ngModelChange)="OnSelect(quantity)" [(ngModel)]="quantity">
+             <option *ngFor="let q of quantities"  [value]="q" >{{q}}</option>
+         </select> 
+         </div>
+             <div>
+                <button class="btn btn-primary" (click)="addProduct(product)">Add to cart</button>
+             </div>
+        </form>
+           <div>
+              <a class="back-link" href="/"> Back to Product List</a>
+           </div>        
+        </div>
+</div>

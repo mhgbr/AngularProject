@@ -1,0 +1,36 @@
+<div *ngIf="items.length; else noCart" class="cart-container" >
+  <div class="cart-item-details">
+   <div *ngFor="let Product of items" class="cart-item">
+          <img src="{{Product.url}}">
+      <div class="cart-panel">
+            <p class="cart-item-details">{{Product.name}}</p>
+            <p class="cart-item-details">{{Product.price}}$</p>          
+        <span class="cart-item-details">Amount:</span>
+        <input type="number" class="cart-item-details" min="1" max="5"  [(ngModel)]="Product.quantity"  value="{{Product.quantity}}">          
+      </div>
+    </div>
+      <h4 class="cart-item">Total Price:{{total | currency}}</h4>
+  </div>
+<div  class="form-margin">
+  <form  #creditCardForm="ngForm"  (ngSubmit)="Submit()">
+      <label>Full Name:</label><br/>
+      <input type="text" name="clientName" required minlength="3" placeholder="minimum 3 characters" [(ngModel)]="creditCard.clientName">
+      <br />
+      <label>Address:</label><br/>
+      <input type="text" name="Address" required  minlength="6" placeholder="minimum 6 characters">
+      <br />
+      <label>Credit Card Number: </label><br/>
+      <input type="text" name="Credit" required  minlength="16" maxlength="16" placeholder="(16-digit number)" [(ngModel)]="creditCard.cardNumber">
+      <br/><br/>
+      <button [disabled]="creditCardForm.invalid" class="btn btn-primary">Submit</button>
+    </form>  
+    </div> 
+</div>
+<div>        
+      <ng-template #noCart>
+        <div class="empty-cart-message">
+         <p> Cart is Empty, <a routerLink="">Back to Product List </a>. </p>
+            </div>             
+     </ng-template>  
+</div>
+      
